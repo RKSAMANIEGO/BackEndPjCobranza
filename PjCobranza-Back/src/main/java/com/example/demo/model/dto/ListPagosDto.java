@@ -12,6 +12,8 @@ public class ListPagosDto {
 
 	private Integer pago_id;
 
+	private Integer prestamo_id;
+	
 	private String cliente;
 	
 	private BigDecimal monto;

@@ -23,6 +23,12 @@ public class ClienteService implements IClienteService {
 	}
 
 	@Override
+	public CCliente findById(Integer id) {
+		CCliente clienteN= clienteRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Cliente con ID "+id+" No Existe"));
+		return clienteN;
+	}
+	
+	@Override
 	public CCliente agregarCliente(ClienteRequestDto cliente) {
 		
 		if(!clienteRepository.findByDni(cliente.getDni()).isPresent()) {		
@@ -53,6 +59,8 @@ public class ClienteService implements IClienteService {
 		clienteRepository.delete(clienteEncontrado);
 		return "Cliente "+clienteEncontrado.getNombre()+" Eliminado Correctamente";
 	}
+
+
 	
 	
 

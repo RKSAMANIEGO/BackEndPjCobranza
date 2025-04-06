@@ -27,6 +27,12 @@ public class PrestamoImpl implements IPrestamoService {
 	public List<ListPrestamosDto> listPrestamos() {	
 		return iPrestamoRepository.listPrestamos();
 	}
+	
+	@Override
+	public CPrestamo findById(Integer id) {
+		CPrestamo prestamoN=iPrestamoRepository.findById(id).orElseThrow(()->new EntityNotFoundException("El Prestamos con ID "+id+" No Existe."));
+		return prestamoN;
+	}
 
 	@Override
 	public CPrestamo agregarPrestamo(PrestamoRequestDto prestamo) throws Exception {
@@ -35,8 +41,10 @@ public class PrestamoImpl implements IPrestamoService {
 		try {
 			LocalDate fechaInicio= LocalDate.now();
 			LocalDate fechaVencimiento= fechaInicio.plusDays(prestamo.getTiempo());
-			String estado = EnumEstadoPrestamos.pendiente.toString();
-			prestamoNuevo =prestamoMapper.prestamoDtoToPrestamo(prestamo, fechaInicio, fechaVencimiento, estado);
+			//EnumEstadoPrestamos estado = EnumEstadoPrestamos.pendiente;
+			prestamo.setEstado(EnumEstadoPrestamos.pendiente);
+			//prestamoNuevo =prestamoMapper.prestamoDtoToPrestamo(prestamo, fechaInicio, fechaVencimiento, estado);
+			prestamoNuevo =prestamoMapper.prestamoDtoToPrestamo(prestamo, fechaInicio, fechaVencimiento);
 		} catch (Exception e) {
 			throw new Exception("Error "+e.getMessage());
 		}
@@ -59,7 +67,8 @@ public class PrestamoImpl implements IPrestamoService {
 			prestamoE.setFechaVencimiento(fechaV);
 		}
 		prestamoE.setTasaInteres(prestamo.getTasaInteres()!=null ? prestamo.getTasaInteres() : prestamoE.getTasaInteres());
-	
+		prestamoE.setEstado(prestamo.getEstado()!=null ? prestamo.getEstado() : prestamoE.getEstado());
+		
 		return iPrestamoRepository.save(prestamoE);
 	}
 
@@ -77,6 +86,13 @@ public class PrestamoImpl implements IPrestamoService {
 		iPrestamoRepository.save(prestamoE);
 		return Map.of("message","El Prestado de "+prestamoE.getCliente().getNombre()+" "+prestamoE.getCliente().getApellido()+" Se Encuentra Pagado.");
 	}
+
+	@Override
+	public List<ListPrestamosDto> listPrestamosByEstado(String estado) {
+		return iPrestamoRepository.listPrestamosByEstado(estado);
+	}
+
+
 
 
 }

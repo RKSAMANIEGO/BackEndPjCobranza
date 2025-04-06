@@ -10,6 +10,8 @@ import com.example.demo.model.dto.PrestamoRequestDto;
 public interface IPrestamoService {
 
 	List<ListPrestamosDto> listPrestamos();
+	CPrestamo findById(Integer id);
+	List<ListPrestamosDto> listPrestamosByEstado(String estado);
 	CPrestamo agregarPrestamo(PrestamoRequestDto prestamo) throws Exception;
 	CPrestamo actualizarPrestamo(Integer id , PrestamoRequestDto prestamo);
 	Map<String,String> eliminarPrestamo(Integer id);

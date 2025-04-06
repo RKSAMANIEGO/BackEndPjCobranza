@@ -32,13 +32,18 @@ public class ClienteController {
 		return new ResponseEntity<>(clienteService.listarCliente(),HttpStatus.OK);
 	}
 	
+	@GetMapping("/{id}")
+	ResponseEntity<CCliente> buscarPorId(@PathVariable(name="id")Integer codCliente){
+		return new ResponseEntity<>(clienteService.findById(codCliente),HttpStatus.OK);
+	}
+	
 	@PostMapping
 	ResponseEntity<?> agregarCliente(@Valid @RequestBody ClienteRequestDto cliente){
 		return new ResponseEntity<>(clienteService.agregarCliente(cliente),HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	ResponseEntity<?> actualizarCliente(@PathVariable(name="id")Integer cod ,@Valid @RequestBody ClienteRequestDto cliente){
+	ResponseEntity<?> actualizarCliente(@PathVariable(name="id")Integer cod ,@RequestBody ClienteRequestDto cliente){
 		return new ResponseEntity<>(clienteService.actualizarCliente(cod, cliente),HttpStatus.OK);
 	}
 	

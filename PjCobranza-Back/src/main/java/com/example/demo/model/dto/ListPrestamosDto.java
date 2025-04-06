@@ -10,11 +10,13 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonPropertyOrder(value= {"prestamo_id","clientes","monto","tiempo","tasa_interes","importeTotal","fecha_inicio","fecha_vencimiento","estado"})
+@JsonPropertyOrder(value= {"prestamo_id","cliente_id","clientes","monto","tiempo","tasa_interes","importeTotal","fecha_inicio","fecha_vencimiento","estado"})
 public class ListPrestamosDto {
 
 	private Integer prestamo_id;
-
+	
+	private Integer cliente_id;
+	
 	private String clientes;
 
 	private BigDecimal monto;

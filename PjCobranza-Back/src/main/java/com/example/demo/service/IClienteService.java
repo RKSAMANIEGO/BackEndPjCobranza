@@ -8,6 +8,8 @@ import com.example.demo.model.dto.ClienteRequestDto;
 
 public interface IClienteService {
 
+	CCliente findById(Integer id);
+	
 	List<CCliente> listarCliente();
 	
 	CCliente agregarCliente(ClienteRequestDto cliente);

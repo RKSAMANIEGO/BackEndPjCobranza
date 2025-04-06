@@ -27,6 +27,12 @@ public class PagosImpl implements IPagoService{
 	public List<ListPagosDto> listaPagosByPrestamo(Integer codPrestamo) {
 		return pagosRepository.listPagosByCodPrestamo(codPrestamo);
 	}
+	
+	@Override
+	public CPago findByIdPago(Integer id) {
+		CPago pagoN= pagosRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Pago con ID "+id+" No Existe¡"));
+		return pagoN;
+	}
 
 	@Override
 	public Map<String, String> agregarPago(PagoRequestDto pago) {
@@ -58,4 +64,6 @@ public class PagosImpl implements IPagoService{
 		pagosRepository.delete(pagoEncontrado);
 		return Map.of("message","Pago Eliminado");
 	}
+
+
 }

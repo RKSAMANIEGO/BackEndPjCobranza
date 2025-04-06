@@ -26,7 +26,7 @@ public class CUserDetailsServiceImpl implements UserDetailsService{
 		CUsuario usuarioE= usuarioRepository.findByEmail(username).orElseThrow( ()-> new UsernameNotFoundException("Usuario No Encontrado"));
 		
 		List<SimpleGrantedAuthority> authority = new ArrayList<>();
-		
+	
 		authority.add(new SimpleGrantedAuthority("ROLE_"+usuarioE.getRol()));
 		
 		return new User(usuarioE.getEmail(), usuarioE.getPassword(), true, true, true, true, authority);

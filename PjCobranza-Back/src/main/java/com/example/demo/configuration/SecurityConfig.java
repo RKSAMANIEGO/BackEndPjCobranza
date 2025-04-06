@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.demo.utils.jwt.FilterAuthentication;
 
@@ -31,16 +33,28 @@ public class SecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		return http
 				.csrf(c-> c.disable())
+				.cors(c->c.configurationSource(corsConfigurationSource()))
 				.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(req -> {
 					req.requestMatchers(HttpMethod.POST, "/auth/log-in").permitAll();
+					req.requestMatchers(HttpMethod.PUT, "/auth/onChangePassword").permitAll();
 					req.requestMatchers("/api/**").authenticated();
 				})
 				.addFilterBefore(filterAuthentication, UsernamePasswordAuthenticationFilter.class)
-				//.httpBasic(Customizer.withDefaults())
 				.build(); 
 	}
-	
+
+    @Bean
+    UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("http://localhost:5173");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config); 
+        return source;
+    }
 	
 	@Bean
 	AuthenticationManager authenticationManager(AuthenticationConfiguration conf) throws Exception {

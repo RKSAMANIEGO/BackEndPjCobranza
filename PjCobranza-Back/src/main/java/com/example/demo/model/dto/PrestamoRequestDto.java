@@ -1,6 +1,7 @@
 package com.example.demo.model.dto;
 
 import com.example.demo.model.CCliente;
+import com.example.demo.model.enumerated.EnumEstadoPrestamos;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -21,4 +22,7 @@ public class PrestamoRequestDto {
 	
 	@NotBlank(message="Ingrese como minimo 1 Cliente, no puede ser nulo ni vacio")
 	private CCliente cliente;
+	
+	//SE AGREGO
+	private EnumEstadoPrestamos estado;
 }

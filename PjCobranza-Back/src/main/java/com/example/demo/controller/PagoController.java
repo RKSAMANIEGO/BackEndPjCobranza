@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.CPago;
 import com.example.demo.model.dto.ListPagosDto;
 import com.example.demo.model.dto.PagoRequestDto;
 import com.example.demo.service.IPagoService;
@@ -29,6 +30,11 @@ public class PagoController {
 	@GetMapping("/{idPrestamo}")
 	ResponseEntity<List<ListPagosDto>> listarPagosPorPrestamos(@PathVariable("idPrestamo") Integer codPrestamo ){
 		return new ResponseEntity<>(pagoService.listaPagosByPrestamo(codPrestamo), HttpStatus.OK);
+	}
+	
+	@GetMapping("/buscarPorId/{idPago}")
+	ResponseEntity<CPago> buscarPagoPorId(@PathVariable("idPago") Integer codPago){
+		return new ResponseEntity<>(pagoService.findByIdPago(codPago), HttpStatus.OK);
 	}
 	
 	@PostMapping
