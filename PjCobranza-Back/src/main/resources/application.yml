@@ -2,9 +2,9 @@ spring:
   application:
     name: PjCobranza-Back
   datasource:
-    url: jdbc:mysql://mysql:3306/pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: ${DB_USER:root}
-    password: ${DB_PASSWORD:rootpassword}
+    url: jdbc:mysql://sql105.infinityfree.com:3306/if0_38689568_pjcobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${DB_USER:if0_38689568}
+    password: ${DB_PASSWORD:blXQhYNQkPVf}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
