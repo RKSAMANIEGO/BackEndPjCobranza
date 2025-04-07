@@ -12,7 +12,7 @@ COPY wait-for-it.sh /wait-for-it.sh
 RUN chmod +x /wait-for-it.sh
 
 # Establecer las variables de entorno para la base de datos remota
-ENV SPRING_DATASOURCE_URL=jdbc:mysql://sql105.infinityfree.com:3306:3306/if0_38689568_pjcobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+ENV SPRING_DATASOURCE_URL=jdbc:mysql://sql105.infinityfree.com:3306/if0_38689568_pjcobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
 ENV SPRING_DATASOURCE_USERNAME=if0_38689568
 ENV SPRING_DATASOURCE_PASSWORD=blXQhYNQkPVf
 
