@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.CCliente;
 import com.example.demo.model.dto.ClienteRequestDto;
-import com.example.demo.model.mapper.ClienteMapper;
+//import com.example.demo.model.mapper.ClienteMapper;
 import com.example.demo.repository.IClienteRepository;
 import com.example.demo.service.IClienteService;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class ClienteService implements IClienteService {
 	
 	private final IClienteRepository clienteRepository;
-	private final ClienteMapper clienteMapper;
+	//private final ClienteMapper clienteMapper;
 	
 	@Override 
 	public List<CCliente> listarCliente() {
@@ -32,7 +32,18 @@ public class ClienteService implements IClienteService {
 	public CCliente agregarCliente(ClienteRequestDto cliente) {
 		
 		if(!clienteRepository.findByDni(cliente.getDni()).isPresent()) {		
-			CCliente clienteNuevo = clienteMapper.clienteRequestToCliente(cliente);
+			//CCliente clienteNuevo = clienteMapper.clienteRequestToCliente(cliente);
+			
+			//CONVERSION DE DTO A CLIENTE
+			CCliente clienteNuevo=CCliente.builder()
+					.nombre(cliente.getNombre())
+					.apellido(cliente.getApellido())
+					.dni(cliente.getDni())
+					.correo(cliente.getCorreo())
+					.telefono(cliente.getTelefono())
+					.direccion(cliente.getDireccion())
+					.build();
+			
 			return clienteRepository.save(clienteNuevo);
 		}	
 		

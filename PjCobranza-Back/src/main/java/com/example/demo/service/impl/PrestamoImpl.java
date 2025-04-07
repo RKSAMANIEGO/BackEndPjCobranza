@@ -9,7 +9,7 @@ import com.example.demo.model.CPrestamo;
 import com.example.demo.model.dto.ListPrestamosDto;
 import com.example.demo.model.dto.PrestamoRequestDto;
 import com.example.demo.model.enumerated.EnumEstadoPrestamos;
-import com.example.demo.model.mapper.PrestamoMapper;
+//import com.example.demo.model.mapper.PrestamoMapper;
 import com.example.demo.repository.IPrestamoRepository;
 import com.example.demo.service.IPrestamoService;
 
@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class PrestamoImpl implements IPrestamoService {
 
 	private final IPrestamoRepository iPrestamoRepository;
-	private final PrestamoMapper prestamoMapper;
+	//private final PrestamoMapper prestamoMapper;
 	
 	@Override
 	public List<ListPrestamosDto> listPrestamos() {	
@@ -41,10 +41,21 @@ public class PrestamoImpl implements IPrestamoService {
 		try {
 			LocalDate fechaInicio= LocalDate.now();
 			LocalDate fechaVencimiento= fechaInicio.plusDays(prestamo.getTiempo());
-			//EnumEstadoPrestamos estado = EnumEstadoPrestamos.pendiente;
 			prestamo.setEstado(EnumEstadoPrestamos.pendiente);
+			
+			//EnumEstadoPrestamos estado = EnumEstadoPrestamos.pendiente;
 			//prestamoNuevo =prestamoMapper.prestamoDtoToPrestamo(prestamo, fechaInicio, fechaVencimiento, estado);
-			prestamoNuevo =prestamoMapper.prestamoDtoToPrestamo(prestamo, fechaInicio, fechaVencimiento);
+			//prestamoNuevo =prestamoMapper.prestamoDtoToPrestamo(prestamo, fechaInicio, fechaVencimiento);
+			
+			//CONVERTIR DTO A PRESTAMOS
+			prestamoNuevo.setMonto(prestamo.getMonto());
+			prestamoNuevo.setTiempo(prestamo.getTiempo());
+			prestamoNuevo.setTasaInteres(prestamo.getTasaInteres());
+			prestamoNuevo.setFechaInicio(fechaInicio);
+			prestamoNuevo.setFechaVencimiento(fechaVencimiento);
+			prestamoNuevo.setEstado(prestamo.getEstado());
+			prestamoNuevo.setCliente(prestamo.getCliente());
+		
 		} catch (Exception e) {
 			throw new Exception("Error "+e.getMessage());
 		}

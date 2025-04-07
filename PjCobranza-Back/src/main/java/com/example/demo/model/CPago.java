@@ -4,12 +4,14 @@ import java.time.LocalDate;
 import com.example.demo.model.enumerated.EnumMetodoPago;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Builder.Default;
 
 @Entity
 @Table(name="pagos")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CPago {
 
 	@Id
@@ -20,6 +22,7 @@ public class CPago {
 	@Column(name="monto_pago")
 	private Double montoPago;
 	
+	@Default
 	@Column(name="fecha_pago")
 	private LocalDate fechaPago= LocalDate.now();
 		

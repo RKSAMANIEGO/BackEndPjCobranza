@@ -1,7 +1,10 @@
 package com.example.demo.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +14,7 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CCliente {
 
 	@Id
@@ -36,5 +40,6 @@ public class CCliente {
 	private String direccion;
 	
 	@Column(name="fecha_registro")
-	private String fechaRegistro;
+	//private String fechaRegistro;
+	private LocalDateTime fechaRegistro;
 }

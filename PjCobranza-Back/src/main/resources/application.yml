@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: PjCobranza-Back
+  datasource:
+    url: jdbc:mysql://mysql:3306/pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:rootpassword}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+server:
+  port: 8092
