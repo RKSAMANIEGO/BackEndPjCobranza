@@ -113,6 +113,10 @@
 	
 
 	 <build>
+
+
+        <finalName>ROOT</finalName>
+
         <plugins>
             <!-- Configuración del plugin de compilación -->
             <plugin>
