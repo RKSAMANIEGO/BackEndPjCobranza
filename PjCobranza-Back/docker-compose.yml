@@ -1,42 +1,14 @@
-services:
-  mysql:
-    image: mysql:8.0
-    container_name: pjcobranza-mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: pjCobranza
-      MYSQL_USER: cobranza_user
-      MYSQL_PASSWORD: userpassword
-      MYSQL_INITDB_SKIP_TZINFO: 1
-      MYSQL_INITDB_WAIT_TIMEOUT: 600  # Aumenta tiempo de espera
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./scripts:/docker-entrypoint-initdb.d
-    ports:
-      - "3307:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
-      interval: 10s
-      timeout: 30s
-      retries: 20  # Aumenta reintentos
-      start_period: 120s  # Mayor periodo inicial
-    mem_limit: 1g  # Asigna memoria específica
+version: '3.7'
 
+services:
   springboot:
     build: .
     container_name: pjcobranza-spring
     restart: unless-stopped
-    depends_on:
-      mysql:
-        condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: cobranza_user
-      SPRING_DATASOURCE_PASSWORD: userpassword
+      SPRING_DATASOURCE_URL: jdbc:mysql://sql.freedb.tech:3306/freedb_pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: freedb_rkSam
+      SPRING_DATASOURCE_PASSWORD: VR@%hZvzQ5%sqBg
     ports:
       - "8092:8080"
     mem_limit: 512m
-
-volumes:
-  mysql_data:
