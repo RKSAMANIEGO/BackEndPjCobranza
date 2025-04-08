@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mysql://sql.freedb.tech:3306/freedb_pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: freedb_rkSam
-    password: Password  # Sustituye "Password" por la contraseña real
+    password: VR@%hZvzQ5%sqBg
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
