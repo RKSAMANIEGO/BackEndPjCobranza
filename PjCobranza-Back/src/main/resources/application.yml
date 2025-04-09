@@ -1,15 +1,31 @@
 spring:
   application:
     name: PjCobranza-Back
+
   datasource:
-    url: jdbc:mysql://mysql:3306/pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: ${DB_USER:root}
-    password: ${DB_PASSWORD:rootpassword}
+    url: jdbc:mysql://sql.freedb.tech:3306/freedb_pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: freedb_rkSam
+    password: VR@%hZvzQ5%sqBg
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+
   jpa:
     hibernate:
       ddl-auto: update
       dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
+
 server:
-  port: 8092
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always

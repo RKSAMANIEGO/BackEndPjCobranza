@@ -107,14 +107,22 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
 		</dependency>
-		
+
+		<!--ACTUATOR-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		
 	</dependencies>
 	
 
 	 <build>
+	 
+	 	<finalName>ROOT</finalName>
+	 	
         <plugins>
-            <!-- Configuración del plugin de compilación -->
+			<!-- Configuración del plugin de compilación -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -122,8 +130,8 @@
                 <configuration>
                     <source>17</source> 
                     <target>17</target>
-                    
-                    <!--  
+
+					<!--  
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
@@ -135,7 +143,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin de Spring Boot -->
+			<!-- Plugin de Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

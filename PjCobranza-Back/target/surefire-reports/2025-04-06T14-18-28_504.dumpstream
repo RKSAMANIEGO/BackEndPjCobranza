@@ -1,5 +1,0 @@
-# Created at 2025-04-06T14:18:28.748
-Boot Manifest-JAR contains absolute paths in classpath 'F:\Projectos\pjCobranza\PjCobranzaSalinas\BackPjCobranza\PjCobranza-Back\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
