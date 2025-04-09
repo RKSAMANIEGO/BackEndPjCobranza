@@ -113,6 +113,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
 		
 	</dependencies>
 	
@@ -121,6 +122,7 @@
 	 
 	 	<finalName>ROOT</finalName>
 	 	
+
         <plugins>
 			<!-- Configuración del plugin de compilación -->
             <plugin>

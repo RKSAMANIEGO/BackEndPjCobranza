@@ -1,13 +1,14 @@
-version: '3'
+version: '3.7'
+
 services:
   springboot:
     build: .
     container_name: pjcobranza-spring
     restart: unless-stopped
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://sql105.infinityfree.com:3306/if0_38689568_pjcobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: if0_38689568
-      SPRING_DATASOURCE_PASSWORD: blXQhYNQkPVf
+      SPRING_DATASOURCE_URL: jdbc:mysql://sql.freedb.tech:3306/freedb_pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: freedb_rkSam
+      SPRING_DATASOURCE_PASSWORD: VR@%hZvzQ5%sqBg
     ports:
       - "8092:8080"
     mem_limit: 512m
