@@ -14,6 +14,7 @@ COPY target/ROOT.jar app.jar
 COPY wait-for-it.sh /wait-for-it.sh
 RUN chmod +x /wait-for-it.sh
 
+EXPOSE 8080
 
 ENV SPRING_DATASOURCE_URL=jdbc:mysql://sql10.freesqldatabase.com:3306/sql10772773?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
 ENV SPRING_DATASOURCE_USERNAME=sql10772773
