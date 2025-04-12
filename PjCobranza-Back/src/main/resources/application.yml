@@ -3,13 +3,13 @@ spring:
     name: PjCobranza-Back
 
   datasource:
-    url: jdbc:mysql://sql.freedb.tech:3306/freedb_pjCobranza?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: freedb_rkSam
-    password: VR@%hZvzQ5%sqBg
+    url: jdbc:mysql://sql10.freesqldatabase.com:3306/sql10772773?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: sql10772773
+    password: 8TaLhVTtiK
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
+      maximum-pool-size: 2
+      minimum-idle: 1
       idle-timeout: 30000
 
   jpa:
@@ -25,7 +25,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, info
+        include: "*"
   endpoint:
     health:
       show-details: always

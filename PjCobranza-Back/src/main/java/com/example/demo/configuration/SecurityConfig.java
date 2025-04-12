@@ -36,6 +36,7 @@ public class SecurityConfig {
 				.cors(c->c.configurationSource(corsConfigurationSource()))
 				.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(req -> {
+					req.requestMatchers("/actuator/**").permitAll();
 					req.requestMatchers(HttpMethod.POST, "/auth/log-in").permitAll();
 					req.requestMatchers(HttpMethod.PUT, "/auth/onChangePassword").permitAll();
 					req.requestMatchers("/api/**").authenticated();
