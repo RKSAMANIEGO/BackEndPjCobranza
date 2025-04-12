@@ -27,5 +27,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 
 #CMD ["/wait-for-it.sh","sql10.freesqldatabase.com:3306", "--timeout=120", "--", "catalina.sh", "run"]    PARA WAR
 #CMD ["/wait-for-it.sh", "sql10.freesqldatabase.com:3306", "--timeout=120", "--", "java", "-jar", "app.jar"]
-CMD /wait-for-it.sh sql10.freesqldatabase.com:3306 --timeout=120 -- java -Dserver.port=$PORT -jar app.jar
+#CMD /wait-for-it.sh sql10.freesqldatabase.com:3306 --timeout=120 -- java -Dserver.port=$PORT -jar app.jar
+CMD ["/wait-for-it.sh", "sql10.freesqldatabase.com:3306", "--timeout=120", "--", "sh", "-c", "java -Dserver.port=$PORT -jar app.jar"]
+
 
