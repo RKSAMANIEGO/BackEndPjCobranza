@@ -33,7 +33,10 @@ public class AuthController {
 	private final Jwt utils;
 	
 	@PostMapping("/log-in")
-	@CrossOrigin(origins = "http://localhost:5173")
+	@CrossOrigin(origins = {
+			"http://localhost:5173",
+			"https://backendpjcobranza-production.up.railway.app"
+	})
 	ResponseEntity<AuthResponseDto> logIn(@Valid @RequestBody AuthRequestDto  credenciales){	
 		try {
 			authenticationManager.authenticate(
